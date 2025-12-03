@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullscreen Button with Liquid Glass Effect</title>
+    <style>
+        /* Basic styling for the page and iframe */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+            margin: 0;
+        }
+
+        /* Styling for the liquid glass effect on the button */
+        .liquid-glass-btn {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);  /* Transparent white background */
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            
+            backdrop-filter: blur(10px); /* Glass blur effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            text-transform: uppercase;
+        }
+
+        /* Hover effect for the button */
+        .liquid-glass-btn:hover {
+            background: rgba(255, 255, 255, 0.15); /* Slightly more opaque */
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Focus effect for accessibility */
+        .liquid-glass-btn:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <iframe id="embededGame" src="https://ozgames.io/geometry-dash.embed" width="550" height="400"></iframe>
+    <button onclick="goFullscreen('embededGame'); return false" class="liquid-glass-btn">Fullscreen</button>
+
+    <script>
+        function goFullscreen(id) {
+            var element = document.getElementById(id);
+            if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullScreen) {
+                element.webkitRequestFullScreen();
+            }
+        }
+    </script>
+</body>
+</html>
